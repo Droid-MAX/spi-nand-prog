@@ -11,8 +11,8 @@
 #include <stdbool.h>
 #include <stdlib.h>
 #include <errno.h>
-#include <spi.h>
-#include <spi-mem.h>
+#include "spi.h"
+#include "spi-mem.h"
 
 static int spi_check_buswidth_req(struct spi_mem *mem, u8 buswidth, bool tx)
 {

@@ -1,6 +1,6 @@
-#include <spi-mem.h>
-#include <serprog.h>
-#include <linux-types.h>
+#include "spi-mem.h"
+#include "serprog.h"
+#include "linux-types.h"
 #include <unistd.h>
 #include <stdio.h>
 #include <stdlib.h>

@@ -4,7 +4,7 @@
  *	Chuanhong Guo <gch981213@gmail.com>
  */
 
-#include <spinand.h>
+#include "spinand.h"
 
 #define SPINAND_MFR_GIGADEVICE			0xC8
 

@@ -2,8 +2,8 @@
 #include <string.h>
 #include <errno.h>
 #include <libusb-1.0/libusb.h>
-#include <spi.h>
-#include <spi-mem.h>
+#include "spi.h"
+#include "spi-mem.h"
 
 #define FX2_BUF_SIZE 512
 #define FX2_VID 0x1209

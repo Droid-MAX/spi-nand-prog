@@ -1,9 +1,9 @@
-#include <spi-mem-drvs.h>
+#include "spi-mem-drvs.h"
 #include <stdio.h>
 #include <getopt.h>
 #include <stdlib.h>
-#include <spinand.h>
-#include <flashops.h>
+#include "spinand.h"
+#include "flashops.h"
 
 static int no_ecc = 0;
 static int with_oob = 0;

@@ -6,7 +6,7 @@
  *	Peter Pan <peterpandong@micron.com>
  */
 
-#include <spinand.h>
+#include "spinand.h"
 
 #define SPINAND_MFR_MICRON		0x2c
 

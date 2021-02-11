@@ -1,10 +1,10 @@
-#include <spinand.h>
+#include "spinand.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
 #include <errno.h>
 #include <string.h>
-#include <flashops.h>
+#include "flashops.h"
 int snand_read(struct spinand_device *snand, size_t offs, size_t len,
 	       bool ecc_enabled, bool read_oob, FILE *fp)
 {

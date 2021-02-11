@@ -15,7 +15,7 @@
 #include <stdint.h>
 #include <stdbool.h>
 #include <errno.h>
-#include <linux-types.h>
+#include "linux-types.h"
 
 #define do_div(n,base) ({					\
 	uint32_t __base = (base);				\

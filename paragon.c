@@ -5,7 +5,7 @@
  * Author: Jeff Kletsky <git-commits@allycomm.com>
  */
 
-#include <spinand.h>
+#include "spinand.h"
 
 
 #define SPINAND_MFR_PARAGON	0xa1

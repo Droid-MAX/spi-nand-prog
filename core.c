@@ -9,8 +9,8 @@
 
 #define pr_fmt(fmt)	"spi-nand: " fmt
 
-#include <spinand.h>
-#include <spi-mem.h>
+#include "spinand.h"
+#include "spi-mem.h"
 #include <errno.h>
 #include <stdio.h>
 #include <string.h>

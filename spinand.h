@@ -8,9 +8,9 @@
 #ifndef __LINUX_MTD_SPINAND_H
 #define __LINUX_MTD_SPINAND_H
 
-#include <linux-types.h>
-#include <nand.h>
-#include <spi-mem.h>
+#include "linux-types.h"
+#include "nand.h"
+#include "spi-mem.h"
 
 /**
  * Standard SPI NAND flash operations

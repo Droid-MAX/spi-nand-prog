@@ -1,0 +1,14 @@
+Source: spi-nand-prog
+Priority: optional
+Maintainer: 981213 <https://github.com/981213>
+Build-Depends: debhelper (>= 9)
+Standards-Version: 1.0
+Section: electronics
+Vcs-Git: https://github.com/981213/spi-nand-prog.git
+Vcs-Browser: https://github.com/981213/spi-nand-prog
+
+Package: spi-nand-prog
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: A SPI-NAND flash programmer botched together using kernel SPI-NAND framework. Works with stm32-vserprog or fx2qspi.
+

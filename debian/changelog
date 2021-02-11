@@ -1,0 +1,5 @@
+spi-nand-prog (1.0-1) UNRELEASED; urgency=medium
+
+  * add support for serprog devices
+
+ -- 981213 <https://github.com/981213>  Thu, 3 Sep 2020 14:54:12 +0800

@@ -5,7 +5,7 @@
  * Author: Boris Brezillon <boris.brezillon@bootlin.com>
  */
 
-#include <spinand.h>
+#include "spinand.h"
 
 #define SPINAND_MFR_MACRONIX		0xC2
 #define MACRONIX_ECCSR_MASK		0x0F

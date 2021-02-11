@@ -7,7 +7,7 @@
  *	Boris Brezillon <boris.brezillon@bootlin.com>
  */
 
-#include <spinand.h>
+#include "spinand.h"
 
 #define SPINAND_MFR_WINBOND		0xEF
 

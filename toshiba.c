@@ -6,7 +6,7 @@
  * Author: Frieder Schrempf <frieder.schrempf@kontron.de>
  */
 
-#include <spinand.h>
+#include "spinand.h"
 
 /* Kioxia is new name of Toshiba memory. */
 #define SPINAND_MFR_TOSHIBA		0x98

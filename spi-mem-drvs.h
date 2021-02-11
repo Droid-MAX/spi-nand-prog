@@ -1,5 +1,5 @@
 #pragma once
-#include <spi-mem.h>
+#include "spi-mem.h"
 
 struct spi_mem *spi_mem_probe(const char *drv, const char *drvarg);
 void spi_mem_remove(const char *drv, struct spi_mem *mem);

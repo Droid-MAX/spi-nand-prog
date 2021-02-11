@@ -15,8 +15,8 @@
 #define __LINUX_SPI_MEM_H
 #include <stddef.h>
 #include <stdbool.h>
-#include <linux-types.h>
-#include <linux-err.h>
+#include "linux-types.h"
+#include "linux-err.h"
 
 typedef long ssize_t;
 struct spi_controller_mem_ops;
