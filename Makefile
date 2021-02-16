@@ -9,16 +9,16 @@ BINDIR    ?= $(PREFIX)/bin
 CFLAGS    ?= -std=gnu99 -Wall -O2
 LDFLAGS   ?= -pthread
 
+SRCS = core.c flashops.c gigadevice.c macronix.c main.c micron.c paragon.c spi-mem-drvs.c spi-mem-fx2qspi.c spi-mem-serprog.c spi-mem.c toshiba.c winbond.c
+
 ifdef LIBS_BASE
 CFLAGS += -I$(LIBS_BASE)/include
 LDFLAGS += -L$(LIBS_BASE)/lib -Wl,-rpath -Wl,$(LIBS_BASE)/lib
 endif
 
-ifeq ($(CONFIG_STATIC),yes)
+ifeq ($(CONFIG_STATIC), yes)
 LDFLAGS += -static
 endif
-
-SRCS = core.c flashops.c gigadevice.c macronix.c main.c micron.c paragon.c spi-mem-drvs.c spi-mem-fx2qspi.c spi-mem-serprog.c spi-mem.c toshiba.c winbond.c
 
 $(PKG): $(TARGET)
 
