@@ -4,12 +4,21 @@ PWD=$(pwd)
 SRC_DIR=$PWD
 BUILD_DIR=$PWD/build
 DOWNLOAD_DIR=$PWD/dl
-BINDIR=$BUILD_DIR/bin
-LIBSDIR=$BUILD_DIR/libs
+BINDIR_X86=$BUILD_DIR/x86
+BINDIR_X64=$BUILD_DIR/x64
+LIBS_DIR=$BUILD_DIR/libs
+LIBSDIR_X86=$LIBS_DIR/x86
+LIBSDIR_X64=$LIBS_DIR/x64
 
 LIBUSB_URL="https://download.fastgit.org/libusb/libusb/releases/download/v1.0.22/libusb-1.0.22.tar.bz2"
 LIBUSB_DIR=""
-PKGNAME="spi-nand-prog"
+
+check_mingw(){
+	if [ ! -x "$(command -v i686-w64-mingw32-gcc)" ] || [ ! -x "$(command -v x86_64-w64-mingw32-gcc)" ]; then
+		echo 'Error: mingw-w64 is not installed.' >&2
+		exit 1
+	fi
+}
 
 prepare_dirs(){
 	if [ ! -d $BUILD_DIR ]; then
@@ -18,11 +27,20 @@ prepare_dirs(){
 	if [ ! -d $DOWNLOAD_DIR ]; then
 		mkdir -p $DOWNLOAD_DIR || exit 1
 	fi
-	if [ ! -d $BINDIR ]; then
-		mkdir -p $BINDIR || exit 1
+	if [ ! -d $BINDIR_X86 ]; then
+		mkdir -p $BINDIR_X86 || exit 1
 	fi
-	if [ ! -d $LIBSDIR ]; then
-		mkdir -p $LIBSDIR || exit 1
+	if [ ! -d $BINDIR_X64 ]; then
+		mkdir -p $BINDIR_X64 || exit 1
+	fi
+	if [ ! -d $LIBS_DIR ]; then
+		mkdir -p $LIBS_DIR || exit 1
+	fi
+	if [ ! -d $LIBSDIR_X86 ]; then
+		mkdir -p $LIBSDIR_X86 || exit 1
+	fi
+	if [ ! -d $LIBSDIR_X64 ]; then
+		mkdir -p $LIBSDIR_X64 || exit 1
 	fi
 	return 0
 }
@@ -37,10 +55,10 @@ download_files(){
 	return 0
 }
 
-build_depends(){
+build_depends_x86(){
 	if [ -d $LIBUSB_DIR ]; then
 		cd $LIBUSB_DIR; \
-		./configure --prefix=$LIBSDIR --disable-udev; \
+		./configure --host=i686-w64-mingw32 --prefix=$LIBSDIR_X86; \
 		make clean; \
 		make; \
 		make install
@@ -48,8 +66,24 @@ build_depends(){
 	return 0
 }
 
-build_target(){
-	make -C $SRC_DIR CONFIG_STATIC=yes LIBS_BASE=$LIBSDIR strip && mv $SRC_DIR/$PKGNAME $BINDIR
+build_depends_x64(){
+	if [ -d $LIBUSB_DIR ]; then
+		cd $LIBUSB_DIR; \
+		./configure --host=x86_64-w64-mingw32 --prefix=$LIBSDIR_X64; \
+		make clean; \
+		make; \
+		make install
+	fi
+	return 0
+}
+
+build_target_x86(){
+	make -C $SRC_DIR CC=i686-w64-mingw32-gcc STRIP=i686-w64-mingw32-strip CONFIG_STATIC=yes TARGET_OS=MinGW LIBS_BASE=$LIBSDIR_X86 strip && mv $SRC_DIR/*.exe $BINDIR_X86
+	return 0
+}
+
+build_target_x64(){
+	make -C $SRC_DIR CC=x86_64-w64-mingw32-gcc STRIP=x86_64-w64-mingw32-strip CONFIG_STATIC=yes TARGET_OS=MinGW LIBS_BASE=$LIBSDIR_X64 strip && mv $SRC_DIR/*.exe $BINDIR_X64
 	return 0
 }
 
@@ -62,8 +96,11 @@ build_target(){
 #	return 0
 #}
 
+check_mingw
 prepare_dirs
 download_files
-build_depends
-build_target
+build_depends_x86
+build_depends_x64
+build_target_x86
+build_target_x64
 #clean_all
