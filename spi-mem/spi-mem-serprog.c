@@ -1,3 +1,4 @@
+#ifndef _WIN32
 #include <spi-mem.h>
 #include <serprog.h>
 #include <linux-types.h>
@@ -335,3 +336,4 @@ void serprog_remove(struct spi_mem *mem)
 {
 	close(serial_fd);
 }
+#endif

@@ -7,8 +7,10 @@ struct spi_mem *spi_mem_probe(const char *drv, const char *drvarg) {
         return ch347_probe();
     if (!strcmp(drv, "fx2qspi"))
         return fx2qspi_probe();
+#ifndef _WIN32
     if (!strcmp(drv, "serprog"))
         return serprog_probe(drvarg);
+#endif
     return NULL;
 }
 
@@ -17,6 +19,8 @@ void spi_mem_remove(const char *drv, struct spi_mem *mem) {
         return ch347_remove(mem);
     if (!strcmp(drv, "fx2qspi"))
         return fx2qspi_remove(mem);
+#ifndef _WIN32
     if (!strcmp(drv, "serprog"))
         return serprog_remove(mem);
+#endif
 }

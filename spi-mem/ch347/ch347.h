@@ -13,7 +13,9 @@
 extern "C" {
 #endif
 
+#ifndef _WIN32
 #include <endian.h>
+#endif
 #include <stdint.h>
 #include <stdbool.h>
 #include <libusb-1.0/libusb.h>
